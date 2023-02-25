@@ -141,7 +141,44 @@ class ActivityListTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("${DateFormat.yMMMMd().format(activityInterval.start)}"),
+        Row(
+          children: [
+            Text("${DateFormat.yMMMMd().format(activityInterval.start)}"),
+            Expanded(
+                child: Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+                Container(
+                  //constraints: BoxConstraints(minWidth: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Text("Win",
+                      style: TextStyle(
+                          color: LichessColors.good,
+                          fontWeight: FontWeight.bold)),
+                ),
+                Container(
+                  //constraints: BoxConstraints(minWidth: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Text("Drawdddd",
+                      style: TextStyle(
+                          color: LichessColors.brag,
+                          fontWeight: FontWeight.bold)),
+                ),
+                Container(
+                  //constraints: BoxConstraints(minWidth: 20),
+                  margin: const EdgeInsets.symmetric(horizontal: 8.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 4),
+                  child: Text("Loss",
+                      style: TextStyle(
+                          color: LichessColors.red,
+                          fontWeight: FontWeight.bold)),
+                ),
+              ],
+            ))
+          ],
+        ),
         ...buildChildren(),
       ],
     );
@@ -168,33 +205,40 @@ class _WinDrawLoss extends StatelessWidget {
               //constraints: BoxConstraints(minWidth: 20),
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               padding: const EdgeInsets.symmetric(horizontal: 4),
+              /*
               decoration: BoxDecoration(
                 color: LichessColors.good,
                 borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: Text(win.toString()),
+              ),*/
+              child: Text(win.toString(),
+                  style: TextStyle(
+                      color: LichessColors.good, fontWeight: FontWeight.bold)),
             ),
             //Text("Wins"),
             Container(
               //constraints: BoxConstraints(minWidth: 20),
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               padding: EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
+              /*decoration: BoxDecoration(
                 color: LichessColors.brag,
                 borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: Text(draw.toString()),
+              ),*/
+              child: Text(draw.toString(),
+                  style: TextStyle(
+                      color: LichessColors.brag, fontWeight: FontWeight.bold)),
             ),
             //Text("Draws"),
             Container(
               //constraints: BoxConstraints(minWidth: 24),
               margin: const EdgeInsets.symmetric(horizontal: 8.0),
               padding: EdgeInsets.symmetric(horizontal: 4),
-              decoration: BoxDecoration(
+              /*decoration: BoxDecoration(
                 color: LichessColors.red,
                 borderRadius: BorderRadius.circular(4.0),
-              ),
-              child: Text(loss.toString()),
+              ),*/
+              child: Text(loss.toString(),
+                  style: TextStyle(
+                      color: LichessColors.red, fontWeight: FontWeight.bold)),
             ),
             //Text("Losses")
           ],
