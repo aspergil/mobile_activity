@@ -40,10 +40,7 @@ class ActivityWidget extends ConsumerWidget {
                 },
                 trailing: const Icon(CupertinoIcons.forward),
               ),
-              Carousel(activityIntervalList: data),
-              /*ListView(
-                children: [Carousel(activityIntervalList: data)],
-              ),*/
+              Activities(activityIntervalList: data),
             ],
           );
         },

@@ -82,8 +82,8 @@ class ActivityScreen extends StatelessWidget {
   }
 }
 
-class Carousel extends StatelessWidget {
-  const Carousel({required this.activityIntervalList});
+class Activities extends StatelessWidget {
+  const Activities({required this.activityIntervalList});
   final IList<ActivityInterval> activityIntervalList;
 
   @override
@@ -105,27 +105,6 @@ class Carousel extends StatelessWidget {
         const SizedBox(height: 12),
       ],
     );
-
-    /*
-    Column(
-      mainAxisSize: MainAxisSize.min,
-      children: <Widget>[
-        SizedBox(
-          // you may want to use an aspect ratio here for tablet support
-          height: 200.0,
-          child: PageView.builder(
-            // store this controller in a State to save the carousel scroll position
-
-            controller: PageController(viewportFraction: 0.8),
-            itemCount: activityIntervalList.length,
-            itemBuilder: (BuildContext context, int itemIndex) {
-              return CarouselItem(
-                  activityInterval: activityIntervalList[itemIndex]);
-            },
-          ),
-        )
-      ],
-    );*/
   }
 }
 
@@ -139,17 +118,18 @@ class ActivityListTile extends StatelessWidget {
     activityInterval.games!.forEach((interval) {
       builder.add(
         ListTile(
-          //leading: Text(data.type),
+          leading: Icon(LichessIcons.bullet),
+          //Text(data.type),
+          visualDensity: VisualDensity(vertical: -4, horizontal: -4),
           title: Row(
             children: [
-              Text(interval.type),
-              _WinDrawLoss(interval.win, interval.draw, interval.loss),
-              //_RatingAndProgress(data.rpAfter, data.rpAfter - data.rpBefore),
-              //Text("End"),
+              //Text(interval.type),
+              //icon: game.perf.icon,
+              _RatingAndProgress(
+                  interval.rpAfter, interval.rpAfter - interval.rpBefore),
             ],
           ),
-          trailing: _RatingAndProgress(
-              interval.rpAfter, interval.rpAfter - interval.rpBefore),
+          trailing: _WinDrawLoss(interval.win, interval.draw, interval.loss),
         ),
       );
     });
@@ -186,17 +166,18 @@ class _WinDrawLoss extends StatelessWidget {
           children: [
             Container(
               //constraints: BoxConstraints(minWidth: 20),
-              //margin: const EdgeInsets.all(15),
-              padding: EdgeInsets.symmetric(horizontal: 4),
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
+              padding: const EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
                 color: LichessColors.good,
                 borderRadius: BorderRadius.circular(4.0),
               ),
               child: Text(win.toString()),
             ),
+            //Text("Wins"),
             Container(
               //constraints: BoxConstraints(minWidth: 20),
-              //margin: const EdgeInsets.only(top: 15.0, bottom: 15.0),
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
               padding: EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
                 color: LichessColors.brag,
@@ -204,9 +185,10 @@ class _WinDrawLoss extends StatelessWidget {
               ),
               child: Text(draw.toString()),
             ),
+            //Text("Draws"),
             Container(
               //constraints: BoxConstraints(minWidth: 24),
-              //margin: const EdgeInsets.only(top: 25.0, bottom: 25.0),
+              margin: const EdgeInsets.symmetric(horizontal: 8.0),
               padding: EdgeInsets.symmetric(horizontal: 4),
               decoration: BoxDecoration(
                 color: LichessColors.red,
@@ -214,6 +196,7 @@ class _WinDrawLoss extends StatelessWidget {
               ),
               child: Text(loss.toString()),
             ),
+            //Text("Losses")
           ],
         ),
       ],
