@@ -141,41 +141,42 @@ class ActivityListTile extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Row(
-          children: [
-            Text("${DateFormat.yMMMMd().format(activityInterval.start)}"),
-            Expanded(
-                child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                SizedBox(
-                  width: 45,
-                  child: Center(
-                      child: Text("Win",
-                          style: TextStyle(
-                              backgroundColor: Colors.blueAccent,
-                              color: LichessColors.good,
-                              fontWeight: FontWeight.bold))),
-                ),
-                SizedBox(
-                  width: 45,
-                  child: Center(
-                      child: Text("Draw",
-                          style: TextStyle(
-                              color: LichessColors.brag,
-                              fontWeight: FontWeight.bold))),
-                ),
-                SizedBox(
-                  width: 45,
-                  child: Center(
-                      child: Text("Loss",
-                          style: TextStyle(
-                              color: LichessColors.red,
-                              fontWeight: FontWeight.bold))),
-                ),
-              ],
-            ))
-          ],
+        ListTile(
+          leading:
+              Text("${DateFormat.yMMMMd().format(activityInterval.start)}"),
+          title: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              SizedBox(
+                width: 45,
+                child: Center(
+                    child: Text("Win",
+                        style: TextStyle(
+                            //backgroundColor: Colors.blueAccent,
+                            //color: LichessColors.good,
+                            //fontWeight: FontWeight.bold
+                            ))),
+              ),
+              SizedBox(
+                width: 45,
+                child: Center(
+                    child: Text("Draw",
+                        style: TextStyle(
+                            //color: LichessColors.brag,
+                            //fontWeight: FontWeight.bold
+                            ))),
+              ),
+              SizedBox(
+                width: 45,
+                child: Center(
+                    child: Text("Loss",
+                        style: TextStyle(
+                            //color: LichessColors.red,
+                            //fontWeight: FontWeight.bold
+                            ))),
+              ),
+            ],
+          ),
         ),
         ...buildChildren(),
       ],
@@ -207,7 +208,7 @@ class _WinDrawLoss extends StatelessWidget {
               child: Center(
                 child: Text(win.toString(),
                     style: TextStyle(
-                        backgroundColor: Colors.amber,
+                        //backgroundColor: Colors.amber,
                         color: LichessColors.good,
                         fontWeight: FontWeight.bold)),
               ),
