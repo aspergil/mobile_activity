@@ -261,8 +261,8 @@ class _RatingAndProgress extends StatelessWidget {
     return Row(
       mainAxisSize: MainAxisSize.min,
       children: [
-        SizedBox(width: 50, child: Text(rating.toString())),
-        const SizedBox(width: 5),
+        SizedBox(width: 44, child: Text(rating.toString())),
+        //const SizedBox(width: 2),
         if (progress == 0)
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
@@ -279,10 +279,10 @@ class _RatingAndProgress extends StatelessWidget {
             children: [
               if (progress < 0)
                 const Icon(LichessIcons.arrow_full_lowerright,
-                    size: 20, color: LichessColors.red)
+                    size: 18, color: LichessColors.red)
               else
                 const Icon(LichessIcons.arrow_full_upperright,
-                    size: 20, color: LichessColors.good),
+                    size: 18, color: LichessColors.good),
               SizedBox(
                 width: 30,
                 child: Text('${progress.abs()}',
