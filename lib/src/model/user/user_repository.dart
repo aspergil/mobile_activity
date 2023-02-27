@@ -8,6 +8,7 @@ import 'package:lichess_mobile/src/common/models.dart';
 import 'package:lichess_mobile/src/constants.dart';
 import 'package:lichess_mobile/src/utils/json.dart';
 import 'user.dart';
+import 'package:lichess_mobile/src/model/user/activity.dart';
 
 class UserRepository {
   const UserRepository({required this.apiClient, required Logger logger})
@@ -50,6 +51,20 @@ class UserRepository {
             (response) => readJsonListOfObjects(
               response.body,
               mapper: UserStatus.fromJson,
+              logger: _log,
+            ),
+          ),
+        );
+  }
+
+  FutureResult<IList<ActivityInterval>> getActivity(UserId id) {
+    // Zhigalko_Sergei
+    //BogdanLalic
+    return apiClient.get(Uri.parse('$kLichessHost/api/user/$id/activity')).then(
+          (result) => result.flatMap(
+            (response) => readJsonListOfObjects(
+              response.body,
+              mapper: ActivityInterval.fromJson,
               logger: _log,
             ),
           ),

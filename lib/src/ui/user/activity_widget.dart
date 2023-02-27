@@ -6,18 +6,25 @@ import 'package:lichess_mobile/src/model/user/activity_repository.dart';
 import 'package:lichess_mobile/src/widgets/feedback.dart';
 import 'package:lichess_mobile/src/utils/l10n_context.dart';
 import 'package:lichess_mobile/src/common/lichess_icons.dart';
-
+import 'package:lichess_mobile/src/model/user/user.dart';
 import 'activity_screen.dart';
+import 'package:lichess_mobile/src/model/user/user_repository_providers.dart';
 
+/*
 final activityListProvider = FutureProvider.autoDispose((ref) {
   final activityRepo = ref.watch(activityRepositoryProvider);
   return Result.release(activityRepo.getActivity(user: 'Zhigalko_Sergei'));
-});
+});*/
 
 class ActivityWidget extends ConsumerWidget {
+  const ActivityWidget({required this.user, super.key});
+
+  final User user;
+
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final activityState = ref.watch(activityListProvider);
+    //final activityState = ref.watch(userRecentGamesProvider(userId: user.id));
+    final activityState = ref.watch(UserActivityProvider(id: user.id));
 
     return activityState.when(
         data: (data) {

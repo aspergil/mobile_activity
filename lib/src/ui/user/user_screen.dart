@@ -107,7 +107,7 @@ class UserScreenBody extends StatelessWidget {
     final list = [
       _Profile(user: user, showPlayerTitle: showPlayerTitle),
       PerfCards(user: user),
-      ActivityWidget(),
+      ActivityWidget(user: user),
       RecentGames(user: user),
     ];
 
