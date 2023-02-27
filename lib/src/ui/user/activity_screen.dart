@@ -115,10 +115,10 @@ class ActivityListTile extends StatelessWidget {
   List<Widget> buildChildren() {
     List<Widget> builder = [];
 
-    activityInterval.games!.forEach((interval) {
+    activityInterval.games.forEach((perf, interval) {
       builder.add(
         ListTile(
-          leading: Icon(LichessIcons.bullet),
+          leading: Icon(perf.icon),
           //Text(data.type),
           visualDensity: VisualDensity(vertical: -4, horizontal: -4),
           title: Row(

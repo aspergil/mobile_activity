@@ -23,6 +23,7 @@ import 'package:lichess_mobile/src/widgets/feedback.dart';
 import 'package:lichess_mobile/src/widgets/list.dart';
 import 'package:lichess_mobile/src/widgets/platform.dart';
 import 'package:lichess_mobile/src/widgets/player.dart';
+import 'package:lichess_mobile/src/ui/user/activity_widget.dart';
 
 class UserScreen extends ConsumerWidget {
   const UserScreen({required this.user, super.key});
@@ -106,6 +107,7 @@ class UserScreenBody extends StatelessWidget {
     final list = [
       _Profile(user: user, showPlayerTitle: showPlayerTitle),
       PerfCards(user: user),
+      ActivityWidget(),
       RecentGames(user: user),
     ];
 

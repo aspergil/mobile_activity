@@ -1,6 +1,8 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:deep_pick/deep_pick.dart';
 import 'package:lichess_mobile/src/utils/json.dart';
+import 'package:lichess_mobile/src/common/models.dart';
+import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 
 part 'activity.freezed.dart';
 
@@ -28,7 +30,7 @@ class ActivityInterval with _$ActivityInterval {
   const factory ActivityInterval({
     required DateTime start,
     required DateTime end,
-    List<Games>? games,
+    required IMap<Perf, Games> games,
   }) = _ActivityInterval;
 
   factory ActivityInterval.fromJson(Map<String, dynamic> json) =>
@@ -40,16 +42,18 @@ class ActivityInterval with _$ActivityInterval {
     return ActivityInterval(
       start: p('interval', 'start').asDateTimeFromMillisecondsOrThrow(),
       end: p('interval', 'end').asDateTimeFromMillisecondsOrThrow(),
-      games: gamesMap.entries
-          .map((e) => Games(
-                type: e.key,
-                draw: p('games', e.key, 'draw').asIntOrThrow(),
-                win: p('games', e.key, 'win').asIntOrThrow(),
-                loss: p('games', e.key, 'loss').asIntOrThrow(),
-                rpBefore: p('games', e.key, 'rp', 'before').asIntOrThrow(),
-                rpAfter: p('games', e.key, 'rp', 'after').asIntOrThrow(),
-              ))
-          .toList(),
+      games: IMap({
+        for (final entry in gamesMap.entries)
+          if (perfNameMap.containsKey(entry.key) && entry.key != 'storm')
+            perfNameMap.get(entry.key)!: Games(
+              type: entry.key,
+              draw: p('games', entry.key, 'draw').asIntOrThrow(),
+              win: p('games', entry.key, 'win').asIntOrThrow(),
+              loss: p('games', entry.key, 'loss').asIntOrThrow(),
+              rpBefore: p('games', entry.key, 'rp', 'before').asIntOrThrow(),
+              rpAfter: p('games', entry.key, 'rp', 'after').asIntOrThrow(),
+            )
+      }),
     );
   }
 }
