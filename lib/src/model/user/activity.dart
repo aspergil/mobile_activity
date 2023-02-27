@@ -68,9 +68,4 @@ class Games with _$Games {
     required int rpBefore,
     required int rpAfter,
   }) = _Games;
-
-  factory Games.fromPick(RequiredPick p) {
-    return Games(
-        type: 'test', win: 1, loss: 2, draw: 3, rpBefore: 4, rpAfter: 5);
-  }
 }

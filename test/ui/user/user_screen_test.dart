@@ -16,6 +16,8 @@ void main() {
       return mockResponse(userGameResponse, 200);
     } else if (request.url.path == '/api/user/$testUserId') {
       return mockResponse(testUserResponse, 200);
+    } else if (request.url.path == '/api/user/$testUserId/activity') {
+      return mockResponse(testActivityResponse, 200);
     }
     return mockResponse('', 404);
   });
@@ -112,4 +114,146 @@ final testUserResponse = '''
     "links": "http://test.com"
   }
 }
+''';
+
+const testActivityResponse = '''
+[
+  {
+    "interval": {
+      "start": 1677456000000,
+      "end": 1677542400000
+    },
+    "games": {
+      "rapid": {
+        "win": 2,
+        "loss": 0,
+        "draw": 0,
+        "rp": {
+          "before": 3022,
+          "after": 3028
+        }
+      }
+    },
+    "puzzles": {
+      "score": {
+        "win": 55,
+        "loss": 4,
+        "draw": 0,
+        "rp": {
+          "before": 1709,
+          "after": 1709
+        }
+      }
+    },
+    "follows": {
+      "in": {
+        "ids": [
+          "bananeaufklo",
+          "akbar4566",
+          "caosayz",
+          "alexgoldberg",
+          "dodo-chess",
+          "chillywilly0",
+          "whitstine",
+          "thegamerr2011",
+          "arjun2704",
+          "joomla2003",
+          "mancastro",
+          "zhukovgleb",
+          "brothermanbm",
+          "txmperchess"
+        ]
+      }
+    }
+  },
+  {
+    "interval": {
+      "start": 1677369600000,
+      "end": 1677456000000
+    },
+    "games": {
+      "classical": {
+        "win": 0,
+        "loss": 0,
+        "draw": 1,
+        "rp": {
+          "before": 2078,
+          "after": 2078
+        }
+      }
+    },
+    "follows": {
+      "in": {
+        "ids": [
+          "gfe4567ujkmnbvfder",
+          "armageddon_13",
+          "akim2014",
+          "jeff_thechef",
+          "kamenev_8_andrei",
+          "kianmehralipanahi",
+          "akiftuna",
+          "sava2012",
+          "miroslavnik2015",
+          "elwood13",
+          "wjswww",
+          "yagizcetin7",
+          "aunee4321",
+          "godkrishna07",
+          "eugeny_bog"
+        ],
+        "nb": 18
+      }
+    }
+  },
+  {
+    "interval": {
+      "start": 1677283200000,
+      "end": 1677369600000
+    },
+    "games": {
+      "classical": {
+        "win": 1,
+        "loss": 0,
+        "draw": 0,
+        "rp": {
+          "before": 2078,
+          "after": 2078
+        }
+      }
+    },
+    "puzzles": {
+      "score": {
+        "win": 28,
+        "loss": 3,
+        "draw": 0,
+        "rp": {
+          "before": 1709,
+          "after": 1709
+        }
+      }
+    },
+    "follows": {
+      "in": {
+        "ids": [
+          "z-masterchief117-z",
+          "ksar1x19",
+          "patrickzhou",
+          "nazarsav12",
+          "goshabelyaev",
+          "campanaro56",
+          "hyp1",
+          "alesaqueen",
+          "green_tazer",
+          "tkm_balkan2010",
+          "yagizcetin7",
+          "orikylee",
+          "simokhin",
+          "disguyaarav",
+          "qnilaidung2011"
+        ],
+        "nb": 18
+      }
+    }
+  }
+]
 ''';

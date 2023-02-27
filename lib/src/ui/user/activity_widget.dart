@@ -26,16 +26,16 @@ class ActivityWidget extends ConsumerWidget {
     final activityState = ref.watch(UserActivityProvider(id: user.id));
 
     return activityState.when(
-        data: (data) {
-          return Column(
-            children: [
-              ListTile(
-                title: Text(
-                  //context.l10n.leaderboard,
-                  'Activity',
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                ),
-                /*
+      data: (data) {
+        return Column(
+          children: [
+            const ListTile(
+              title: Text(
+                //context.l10n.leaderboard,
+                'Activity',
+                style: TextStyle(fontWeight: FontWeight.bold),
+              ),
+              /*
                 onTap: () {
                   Navigator.of(context).push<void>(
                     MaterialPageRoute(
@@ -45,23 +45,19 @@ class ActivityWidget extends ConsumerWidget {
                     ),
                   );
                 },*/
-                //trailing: const Icon(CupertinoIcons.forward),
-              ),
-              Activities(activityIntervalList: data),
-            ],
-          );
-        },
-        error: (error, stackTrace) {
-          debugPrint(
-              'SEVERE: [ActivityWidget] could not load activity data; $error\n $stackTrace');
-          return const Text('could not load activity');
-        },
-        loading: () => const CenterLoadingIndicator());
-  }
-
-  List<Widget> _buildList() {
-    return [
-      Text("data"),
-    ];
+              //trailing: const Icon(CupertinoIcons.forward),
+            ),
+            Activities(activityIntervalList: data),
+          ],
+        );
+      },
+      error: (error, stackTrace) {
+        debugPrint(
+          'SEVERE: [ActivityWidget] could not load activity data; $error\n $stackTrace',
+        );
+        return const Text('could not load activity');
+      },
+      loading: () => const CenterLoadingIndicator(),
+    );
   }
 }

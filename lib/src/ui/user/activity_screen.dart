@@ -114,7 +114,7 @@ class ActivityListTile extends StatelessWidget {
   final ActivityInterval activityInterval;
 
   List<Widget> buildChildren() {
-    List<Widget> builder = [];
+    final List<Widget> builder = [];
 
     activityInterval.games.forEach((perf, interval) {
       builder.add(
@@ -127,7 +127,9 @@ class ActivityListTile extends StatelessWidget {
               Text(perf.shortTitle),
               const Spacer(),
               _RatingAndProgress(
-                  interval.rpAfter, interval.rpAfter - interval.rpBefore),
+                interval.rpAfter,
+                interval.rpAfter - interval.rpBefore,
+              ),
             ],
           ),
           trailing: _WinDrawLoss(interval.win, interval.draw, interval.loss),
@@ -278,17 +280,28 @@ class _RatingAndProgress extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: [
               if (progress < 0)
-                const Icon(LichessIcons.arrow_full_lowerright,
-                    size: 18, color: LichessColors.red)
+                const Icon(
+                  LichessIcons.arrow_full_lowerright,
+                  size: 14,
+                  color: LichessColors.red,
+                )
               else
-                const Icon(LichessIcons.arrow_full_upperright,
-                    size: 18, color: LichessColors.good),
+                const Icon(
+                  LichessIcons.arrow_full_upperright,
+                  size: 14,
+                  color: LichessColors.good,
+                ),
               SizedBox(
                 width: 30,
-                child: Text('${progress.abs()}',
-                    style: progress < 0
-                        ? const TextStyle(color: LichessColors.red)
-                        : const TextStyle(color: LichessColors.good)),
+                child: Text(
+                  '${progress.abs()}',
+                  style: progress < 0
+                      ? const TextStyle(color: LichessColors.red, fontSize: 12)
+                      : const TextStyle(
+                          color: LichessColors.good,
+                          fontSize: 12,
+                        ),
+                ),
               )
             ],
           )
