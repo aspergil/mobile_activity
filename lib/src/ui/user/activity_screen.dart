@@ -177,7 +177,6 @@ class ActivityListTile extends StatelessWidget {
                     "Loss",
                     style: TextStyle(
                       fontWeight: FontWeight.w300,
-                      fontSize:
                     ),
                   ),
                 ),
