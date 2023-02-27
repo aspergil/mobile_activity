@@ -154,10 +154,8 @@ class ActivityListTile extends StatelessWidget {
                   child: Text(
                     "Win",
                     style: TextStyle(
-                        //backgroundColor: Colors.blueAccent,
-                        //color: LichessColors.good,
-                        //fontWeight: FontWeight.bold
-                        ),
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
               ),
@@ -167,9 +165,8 @@ class ActivityListTile extends StatelessWidget {
                   child: Text(
                     "Draw",
                     style: TextStyle(
-                        //color: LichessColors.brag,
-                        //fontWeight: FontWeight.bold
-                        ),
+                      fontWeight: FontWeight.w300,
+                    ),
                   ),
                 ),
               ),
@@ -179,9 +176,9 @@ class ActivityListTile extends StatelessWidget {
                   child: Text(
                     "Loss",
                     style: TextStyle(
-                        //color: LichessColors.red,
-                        //fontWeight: FontWeight.bold
-                        ),
+                      fontWeight: FontWeight.w300,
+                      fontSize:
+                    ),
                   ),
                 ),
               ),
@@ -267,46 +264,35 @@ class _RatingAndProgress extends StatelessWidget {
       children: [
         SizedBox(width: 50, child: Text(rating.toString())),
         const SizedBox(width: 5),
-        if (progress < 0)
-          Row(
-            mainAxisSize: MainAxisSize.min,
-            mainAxisAlignment: MainAxisAlignment.end,
-            children: [
-              const Icon(
-                LichessIcons.arrow_full_lowerright,
-                size: 20,
-                color: LichessColors.red,
-              ),
-              SizedBox(
-                width: 30,
-                child: Text(
-                  '${progress.abs()}',
-                  style: const TextStyle(color: LichessColors.red),
-                ),
-              )
-            ],
-          )
-        else if (progress > 0)
+        if (progress == 0)
           Row(
             mainAxisAlignment: MainAxisAlignment.end,
             mainAxisSize: MainAxisSize.min,
-            children: [
-              const Icon(
-                LichessIcons.arrow_full_upperright,
-                size: 20,
-                color: LichessColors.good,
-              ),
-              SizedBox(
-                width: 30,
-                child: Text(
-                  '$progress',
-                  style: const TextStyle(color: LichessColors.good),
-                ),
-              )
+            children: const [
+              SizedBox(width: 20),
+              SizedBox(width: 30),
             ],
           )
         else
-          const SizedBox.shrink(),
+          Row(
+            mainAxisSize: MainAxisSize.min,
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              if (progress < 0)
+                const Icon(LichessIcons.arrow_full_lowerright,
+                    size: 20, color: LichessColors.red)
+              else
+                const Icon(LichessIcons.arrow_full_upperright,
+                    size: 20, color: LichessColors.good),
+              SizedBox(
+                width: 30,
+                child: Text('${progress.abs()}',
+                    style: progress < 0
+                        ? const TextStyle(color: LichessColors.red)
+                        : const TextStyle(color: LichessColors.good)),
+              )
+            ],
+          )
       ],
     );
   }
