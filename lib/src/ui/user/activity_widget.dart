@@ -29,6 +29,7 @@ class ActivityWidget extends ConsumerWidget {
                   'Activity',
                   style: const TextStyle(fontWeight: FontWeight.bold),
                 ),
+                /*
                 onTap: () {
                   Navigator.of(context).push<void>(
                     MaterialPageRoute(
@@ -37,8 +38,8 @@ class ActivityWidget extends ConsumerWidget {
                       ),
                     ),
                   );
-                },
-                trailing: const Icon(CupertinoIcons.forward),
+                },*/
+                //trailing: const Icon(CupertinoIcons.forward),
               ),
               Activities(activityIntervalList: data),
             ],

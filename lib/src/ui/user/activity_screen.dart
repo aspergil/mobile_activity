@@ -4,7 +4,6 @@ import 'package:intl/intl.dart';
 import 'package:fast_immutable_collections/fast_immutable_collections.dart';
 
 import 'package:lichess_mobile/src/constants.dart';
-//import 'package:lichess_mobile/src/utils/style.dart';
 import 'package:lichess_mobile/src/utils/l10n_context.dart';
 import 'package:lichess_mobile/src/common/lichess_icons.dart';
 import 'package:lichess_mobile/src/common/lichess_colors.dart';
@@ -120,11 +119,11 @@ class ActivityListTile extends StatelessWidget {
         ListTile(
           leading: Icon(perf.icon),
           //Text(data.type),
-          visualDensity: VisualDensity(vertical: -4, horizontal: -4),
+          visualDensity: const VisualDensity(vertical: -4, horizontal: -4),
           title: Row(
             children: [
-              //Text(interval.type),
-              //icon: game.perf.icon,
+              Text(perf.shortTitle),
+              const Spacer(),
               _RatingAndProgress(
                   interval.rpAfter, interval.rpAfter - interval.rpBefore),
             ],
@@ -146,34 +145,43 @@ class ActivityListTile extends StatelessWidget {
               Text("${DateFormat.yMMMMd().format(activityInterval.start)}"),
           title: Row(
             mainAxisAlignment: MainAxisAlignment.end,
-            children: [
+            children: const [
               SizedBox(
                 width: 45,
                 child: Center(
-                    child: Text("Win",
-                        style: TextStyle(
-                            //backgroundColor: Colors.blueAccent,
-                            //color: LichessColors.good,
-                            //fontWeight: FontWeight.bold
-                            ))),
+                  child: Text(
+                    "Win",
+                    style: TextStyle(
+                        //backgroundColor: Colors.blueAccent,
+                        //color: LichessColors.good,
+                        //fontWeight: FontWeight.bold
+                        ),
+                  ),
+                ),
               ),
               SizedBox(
                 width: 45,
                 child: Center(
-                    child: Text("Draw",
-                        style: TextStyle(
-                            //color: LichessColors.brag,
-                            //fontWeight: FontWeight.bold
-                            ))),
+                  child: Text(
+                    "Draw",
+                    style: TextStyle(
+                        //color: LichessColors.brag,
+                        //fontWeight: FontWeight.bold
+                        ),
+                  ),
+                ),
               ),
               SizedBox(
                 width: 45,
                 child: Center(
-                    child: Text("Loss",
-                        style: TextStyle(
-                            //color: LichessColors.red,
-                            //fontWeight: FontWeight.bold
-                            ))),
+                  child: Text(
+                    "Loss",
+                    style: TextStyle(
+                        //color: LichessColors.red,
+                        //fontWeight: FontWeight.bold
+                        ),
+                  ),
+                ),
               ),
             ],
           ),
@@ -183,9 +191,6 @@ class ActivityListTile extends StatelessWidget {
     );
   }
 }
-/*
-
-        */
 
 class _WinDrawLoss extends StatelessWidget {
   const _WinDrawLoss(this.win, this.draw, this.loss);
@@ -206,28 +211,38 @@ class _WinDrawLoss extends StatelessWidget {
             SizedBox(
               width: 45,
               child: Center(
-                child: Text(win.toString(),
-                    style: TextStyle(
-                        //backgroundColor: Colors.amber,
-                        color: LichessColors.good,
-                        fontWeight: FontWeight.bold)),
+                child: Text(
+                  win.toString(),
+                  style: const TextStyle(
+                    color: LichessColors.good,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
               ),
             ),
             SizedBox(
               width: 45,
               child: Center(
-                  child: Text(draw.toString(),
-                      style: TextStyle(
-                          color: LichessColors.brag,
-                          fontWeight: FontWeight.bold))),
+                child: Text(
+                  draw.toString(),
+                  style: const TextStyle(
+                    color: LichessColors.brag,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
             SizedBox(
               width: 45,
               child: Center(
-                  child: Text(loss.toString(),
-                      style: TextStyle(
-                          color: LichessColors.red,
-                          fontWeight: FontWeight.bold))),
+                child: Text(
+                  loss.toString(),
+                  style: const TextStyle(
+                    color: LichessColors.red,
+                    fontWeight: FontWeight.bold,
+                  ),
+                ),
+              ),
             ),
 
             //Text("Losses")
