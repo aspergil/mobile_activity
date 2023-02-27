@@ -10,7 +10,6 @@ import 'package:lichess_mobile/src/utils/riverpod.dart';
 import 'user_repository.dart';
 import 'user.dart';
 import 'activity.dart';
-import 'activity_repository.dart';
 
 part 'user_repository_providers.g.dart';
 

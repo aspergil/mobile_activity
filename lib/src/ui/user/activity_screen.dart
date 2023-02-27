@@ -91,8 +91,10 @@ class Activities extends StatelessWidget {
       mainAxisSize: MainAxisSize.min,
       children: [
         // This is where we need to added the activity intervals
-        ...activityIntervalList.map((activityInterval) =>
-            ActivityListTile(activityInterval: activityInterval)),
+        ...activityIntervalList.where((item) => item.games.length != 0).map(
+              (activityInterval) =>
+                  ActivityListTile(activityInterval: activityInterval),
+            ),
         /*
         ...ListTile.divideTiles(
           color: dividerColor(context),
