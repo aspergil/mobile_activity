@@ -151,7 +151,7 @@ class ActivityListTile extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.end,
             children: const [
               SizedBox(
-                width: 45,
+                width: 42,
                 child: Center(
                   child: Text(
                     "Win",
@@ -162,7 +162,7 @@ class ActivityListTile extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 45,
+                width: 42,
                 child: Center(
                   child: Text(
                     "Draw",
@@ -173,7 +173,7 @@ class ActivityListTile extends StatelessWidget {
                 ),
               ),
               SizedBox(
-                width: 45,
+                width: 42,
                 child: Center(
                   child: Text(
                     "Loss",
@@ -209,7 +209,7 @@ class _WinDrawLoss extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.end,
           children: [
             SizedBox(
-              width: 45,
+              width: 42,
               child: Center(
                 child: Text(
                   win.toString(),
@@ -221,7 +221,7 @@ class _WinDrawLoss extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 45,
+              width: 42,
               child: Center(
                 child: Text(
                   draw.toString(),
@@ -233,7 +233,7 @@ class _WinDrawLoss extends StatelessWidget {
               ),
             ),
             SizedBox(
-              width: 45,
+              width: 42,
               child: Center(
                 child: Text(
                   loss.toString(),
