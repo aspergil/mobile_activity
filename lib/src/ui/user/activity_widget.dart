@@ -1,6 +1,7 @@
-//import 'package:async/async.dart';
 import 'package:flutter/material.dart';
 //import 'package:flutter/cupertino.dart';
+
+import 'package:lichess_mobile/src/common/styles.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:lichess_mobile/src/widgets/feedback.dart';
 //import 'package:lichess_mobile/src/utils/l10n_context.dart';
@@ -9,12 +10,6 @@ import 'package:lichess_mobile/src/model/user/user.dart';
 import 'activity_screen.dart';
 import 'package:lichess_mobile/src/model/user/user_repository_providers.dart';
 
-/*
-final activityListProvider = FutureProvider.autoDispose((ref) {
-  final activityRepo = ref.watch(activityRepositoryProvider);
-  return Result.release(activityRepo.getActivity(user: 'Zhigalko_Sergei'));
-});*/
-
 class ActivityWidget extends ConsumerWidget {
   const ActivityWidget({required this.user, super.key});
 
@@ -22,7 +17,6 @@ class ActivityWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    //final activityState = ref.watch(userRecentGamesProvider(userId: user.id));
     final activityState = ref.watch(UserActivityProvider(id: user.id));
 
     return activityState.when(
@@ -30,11 +24,7 @@ class ActivityWidget extends ConsumerWidget {
         return Column(
           children: [
             const ListTile(
-              title: Text(
-                //context.l10n.leaderboard,
-                'Activity',
-                style: TextStyle(fontWeight: FontWeight.bold),
-              ),
+              title: Text('Activity', style: Styles.sectionTitle),
               /*
                 onTap: () {
                   Navigator.of(context).push<void>(
